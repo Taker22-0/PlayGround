@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><meta name="theme-color" content="#101510"><link rel="icon" href="data:,">
+<title>NEON MILE — Road to the Apex</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Neon Mile home"><span class="brand-mark">NM</span><span>NEON<span class="brand-light">MILE</span><small>ROAD TO THE APEX</small></span></a>
+    <div class="top-stats"><div class="stat-chip"><span class="coin-icon">¢</span><b id="coins">1,250</b><small>COINS</small></div><div class="stat-chip xp-chip"><span class="level-badge" id="level">01</span><div class="xp-meta"><b>DRIVER LEVEL</b><div class="xp-track"><i id="xpbar"></i></div></div></div><button class="sound-button" id="soundBtn" title="Toggle sound">♫ <span>SOUND</span></button></div>
+  </header>
+  <main>
+    <section id="garageScreen" class="screen garage-screen">
+      <div class="hero-copy"><div class="eyebrow"><i></i> ARCADE RACING · EST. 2004</div><h1>CHASE THE<br><em>HORIZON.</em></h1><p>Three lanes. No second chances. Make every mile count.</p><div class="hero-actions"><button class="primary-btn" id="raceNow">RACE NOW <span>↗</span></button><span class="key-hint">OR PRESS <kbd>ENTER</kbd></span></div></div>
+      <div class="hero-art" aria-label="Sports car on a retro highway"><div class="sun"></div><div class="mountains mountain-back"></div><div class="mountains mountain-front"></div><div class="road-art"><i></i><i></i></div><div class="art-car"><span class="car-glass"></span><span class="wheel wheel-a"></span><span class="wheel wheel-b"></span><span class="tail-lights"></span></div><div class="speed-lines"></div><div class="art-caption">01 — THE OPEN ROAD</div></div>
+      <section class="race-panel"><div class="section-heading"><div><span class="eyebrow">PICK YOUR ROUTE</span><h2>THE CIRCUIT</h2></div><div class="map-nav"><span id="mapCount">01 / 04</span><button id="prevMap" aria-label="Previous map">←</button><button id="nextMap" aria-label="Next map">→</button></div></div><div id="trackGrid" class="track-grid"></div></section>
+      <section class="garage-panel"><div class="garage-heading"><div><span class="eyebrow">YOUR MACHINE</span><h2>THE GARAGE</h2></div><button id="openGarage" class="text-btn">FULL GARAGE <span>↗</span></button></div><div class="car-card"><div class="car-visual"><div class="car-shadow"></div><div class="garage-car" id="garageCar"><span class="g-window"></span><span class="g-wheel one"></span><span class="g-wheel two"></span></div><div class="car-tag" id="carTag">01 / 08</div></div><div class="car-info"><div class="car-title-row"><div><span class="car-class" id="carClass">STARTER · FWD</span><h3 id="carName">Ford Focus RS</h3></div><div class="car-arrows"><button id="carPrev">←</button><button id="carNext">→</button></div></div><div class="car-stats" id="carStats"></div><div class="upgrade-row"><span>PERFORMANCE TIER <b id="upgradeTier">STOCK</b></span><button class="upgrade-btn" id="upgradeBtn">UPGRADE <b>¢ <span id="upgradeCost">500</span></b></button></div></div></div></section>
+      <section class="progress-strip"><div><span class="eyebrow">CAREER</span><b id="careerSummary">0 / 4 ROUTES CLEARED</b></div><div class="career-progress"><i id="careerProgress"></i></div><div class="milestone">NEXT MILESTONE <b id="nextMilestone">LEVEL 03 · NISSAN GT-R</b></div></section>
+    </section>
+    <section id="raceScreen" class="screen race-screen hidden"><div class="race-top"><button class="back-btn" id="quitRace">← GARAGE</button><div class="race-title"><span id="raceBiome">COASTAL HIGHWAY</span><b id="raceTrackName">PACIFIC RUN</b></div><div class="race-hud"><div><small>TIME</small><b id="raceTime">00:00.00</b></div><div><small>BEST</small><b id="raceBest">—</b></div><div class="distance-hud"><small>DISTANCE</small><b><span id="distance">0</span><i> / 1800 m</i></b></div></div></div>
+      <div class="game-wrap"><canvas id="gameCanvas" width="960" height="540" aria-label="Racing game"></canvas><div class="race-overlay" id="countdown"><span>READY?</span><b>3</b></div><div class="race-overlay result-overlay hidden" id="resultOverlay"><div class="result-card"><span class="eyebrow" id="resultEyebrow">RACE COMPLETE</span><h2 id="resultTitle">NEW PERSONAL BEST</h2><div class="result-medal" id="resultMedal">GOLD</div><p id="resultSummary">You conquered the coast.</p><div class="reward-row"><span>COINS <b id="rewardCoins">+0</b></span><span>XP <b id="rewardXp">+0</b></span></div><div class="result-actions"><button class="primary-btn" id="retryRace">RACE AGAIN ↻</button><button class="secondary-btn" id="resultGarage">GARAGE</button></div></div></div><div class="game-hint"><span>← →</span> OR <span>A D</span> TO STEER <i>·</i> <span>↑</span> BOOST <small>SPACE</small></div></div>
+      <div class="race-bottom"><div class="race-progress"><span>START</span><div><i id="raceProgress"></i><b id="raceCarIcon">◆</b></div><span>FINISH</span></div><div class="mobile-controls"><button data-steer="-1">◀</button><button data-boost>BOOST</button><button data-steer="1">▶</button></div><div class="race-tip" id="raceTip">DODGE THE TRAFFIC. CHASE YOUR BEST.</div></div>
+    </section>
+    <section id="garageModal" class="modal hidden"><div class="modal-card garage-modal"><button class="modal-close" data-close>×</button><span class="eyebrow">YOUR COLLECTION</span><h2>THE GARAGE</h2><div class="modal-tabs"><button class="active" data-tab="owned">OWNED <span id="ownedCount">1</span></button><button data-tab="shop">DEALERSHIP</button></div><div id="garageList" class="garage-list"></div><div class="sell-row"><span>Need some cash? Sell your selected ride.<small>You must keep at least one car.</small></span><button id="sellCar" class="secondary-btn">SELL CAR · ¢<b id="sellValue">0</b></button></div></div></section>
+    <section id="levelModal" class="modal hidden"><div class="modal-card level-card"><button class="modal-close" data-close>×</button><div class="level-up-icon">↑</div><span class="eyebrow">DRIVER RANK INCREASED</span><h2>LEVEL <b id="newLevel">02</b></h2><p id="levelRewardText">Your career multiplier is now x1.1.</p><button class="primary-btn" data-close>LET'S RIDE</button></div></section>
+    <div id="toast" class="toast"></div>
+  </main>
+  <footer><span>© 2004–2026 NEON MILE MOTOR CLUB</span><span>NO RULES. JUST ROAD.</span></footer>
+</div>
+<script src="game.js"></script>
+</body></html>
